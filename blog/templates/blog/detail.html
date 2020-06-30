@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %} {% block content %}
+
+<main role="main">
+
+    <h1 class='text-center pt-3 pb-3'>{{ posts.title}}</h1>
+    <p class='text-center'>{{ posts.date_posted|date:"F d, Y" }}</p>
+    <p class='text-center'><img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{ posts.author.profile.image.url  }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+        <rect width="100%" height="100%" fill="#777" />
+        </img>
+    </p>
+    <br>
+    <div class="text-center">
+        <h4>Written by:</h4>
+        <h5> <a href="{% url 'author_posts' posts.author.username %}">{{ posts.author }}</a></h5>
+    </div>
+
+    <div class="card p-3">
+        <p class="text-center">{{ posts.content }}</p>
+        {% if posts.author == user %}
+        <a class="btn btn-secondary ml-3" style="width: 10%;" href="{% url 'update' posts.id %}">Update</a>
+        <a class="btn btn-danger ml-3 float-right d-inline" style="width: 10%;" href="{% url 'delete' posts.id %}">Delete</a> {% endif %}
+    </div>
+
+
+</main>
+
+{% endblock content %}

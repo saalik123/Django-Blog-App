@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %} {% block content %}
+<article class="media content-section">
+    <img class="rounded-circle article-img img-thumbnail" src="{{ object.author.profile.image.url }}">
+    <br>
+    <br>
+
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.author }}</a>
+            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+        </div>
+
+        {% if object.author == user %}
+        <a class="btn btn-secondary" href="{% url 'update' posts.id %}">Update</a>
+        <a class="btn btn-danger" href="{% url 'delete' posts.id %}">Delete</a> {% endif %}
+
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.content }}</p>
+    </div>
+
+
+</article>
+{% endblock content %}
+
+<!-- its a convention for CBV to use "object" -->
