@@ -17,8 +17,8 @@
     <div class="card p-3">
         <p class="text-center">{{ posts.content }}</p>
         {% if posts.author == user %}
-        <a class="btn btn-secondary ml-3" style="width: 10%;" href="{% url 'update' posts.id %}">Update</a>
-        <a class="btn btn-danger ml-3 float-right d-inline" style="width: 10%;" href="{% url 'delete' posts.id %}">Delete</a> {% endif %}
+        <a class="btn btn-secondary mb-3 ml-3" style="width: 10%;" href="{% url 'update' posts.id %}">Update</a>
+        <a class="btn btn-danger ml-3" style="width: 10%;" href="{% url 'delete' posts.id %}">Delete</a> {% endif %}
     </div>
 
 
